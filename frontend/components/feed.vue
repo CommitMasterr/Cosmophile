@@ -15,13 +15,13 @@
 
                         <article v-for="post in pagePosts" :key="post.id" class="feed-post">
                             <div class="feed-img">
-                                <nuxt-link :to="{name: 'post-id', params: { id: post.id } }">
+                                <nuxt-link :to="{name: 'post-slug-id', params: { slug: post.slugTitle, id: post.id } }">
                                     <img :src="post.thumbnail" alt="" class="feed__img">
                                 </nuxt-link>
                             </div>
                             <div class="feed-content">
                                 <h3 class="feed__title title">
-                                    <nuxt-link :to="{name: 'post-id', params: { id: post.id } }">
+                                    <nuxt-link :to="{name: 'post-slug-id', params: { slug: post.slugTitle,  id: post.id } }">
                                         {{post.title}}
                                     </nuxt-link>
                                 </h3>

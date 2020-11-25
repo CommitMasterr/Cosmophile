@@ -4,7 +4,7 @@
         <div class="error">
             <h1 class="error__code">~{{error.statusCode}}~</h1>
             <h2 class="error__title">Oops! You ran out of oxygen.</h2>
-            <p class="error__subtitle">The page you're looking for is now beyond our reach. Let's get you..</p>
+            <p class="error__subtitle">Something went wrong. Let's get you..</p>
             <nuxt-link to="/" class="error__btn">Home</nuxt-link>
         </div>
         <!-- END ERROR -->

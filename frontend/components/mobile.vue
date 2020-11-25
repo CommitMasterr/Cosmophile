@@ -9,14 +9,7 @@
     <div class="mobile-menu">
         <ul class="mobile-list">
             <li>
-                <nuxt-link to="#">
-                    Categories
-                </nuxt-link>
-            </li>
-            <li>
-                <nuxt-link to="#">
-                    Contacts
-                </nuxt-link>
+                <a href="mailto:commitmaster@gmail.com">Contact</a>
             </li>
         </ul>
         

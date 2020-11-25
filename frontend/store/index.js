@@ -66,7 +66,7 @@ export const mutations = {
 
   // Data fetching
   mutateFetchPosts(state, data) {
-    state.posts = data;
+    state.posts = data.reverse();
   },
 
   mutateFilteredPosts(state, data) {
@@ -74,7 +74,7 @@ export const mutations = {
   },
 
   mutateComments(state, data) {
-    state.comments = data;
+    state.comments = data.reverse();
   },
 
   mutatePopularPost(state, data) {

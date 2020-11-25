@@ -10,15 +10,15 @@
 
                 <div v-if="popularLoaded && latestLoaded" class="highlights-posts">
                     <article class="highlights-post">
-                        <img :src="rawPosts[latest].thumbnail" alt="" class="highlights__img">
+                        <img :src="rawPosts[0].thumbnail" alt="" class="highlights__img">
                         <div class="highlights-content">
                             <span class="highlights__section-mark"><img src="../assets/imgs/icons/play.svg" alt="">Latest Post</span>
                             <h3 class="highlights__title title">
-                                <nuxt-link :to="{name: 'post-id', params: { id: rawPosts[latest].id } }">
-                                    {{rawPosts[latest].title}}
+                                <nuxt-link :to="{name: 'post-slug-id', params: { slug: rawPosts[0].slugTitle, id: rawPosts[0].id } }">
+                                    {{rawPosts[0].title}}
                                 </nuxt-link>
                             </h3>
-                            <nuxt-link :to="{name: 'post-id', params: { id: rawPosts[latest].id } }" class="highlights__btn primary-btn">Keep Reading</nuxt-link>
+                            <nuxt-link :to="{name: 'post-slug-id', params: { slug: rawPosts[0].slugTitle, id: rawPosts[0].id } }" class="highlights__btn primary-btn">Keep Reading</nuxt-link>
                         </div>
                     </article>
                     <article class="highlights-post">
@@ -26,11 +26,11 @@
                         <div class="highlights-content">
                             <span class="highlights__section-mark"><img src="../assets/imgs/icons/play.svg" alt="">Popular Post</span>
                             <h3 class="highlights__title title">
-                            <nuxt-link :to="{name: 'post-id', params: { id: popularPosts[0].id } }">
+                            <nuxt-link :to="{name: 'post-slug-id', params: { slug: popularPosts[0].slugTitle, id: popularPosts[0].id } }">
                                     {{popularPosts[0].title}}
                                 </nuxt-link>
                             </h3>
-                            <nuxt-link :to="{name: 'post-id', params: { id: popularPosts[0].id } }" class="highlights__btn primary-btn">Keep Reading</nuxt-link>
+                            <nuxt-link :to="{name: 'post-slug-id', params: { slug: popularPosts[0].slugTitle, id: popularPosts[0].id } }" class="highlights__btn primary-btn">Keep Reading</nuxt-link>
                         </div>
                     </article>
                 </div>
@@ -48,7 +48,6 @@
             return{
                 latestLoaded: false,
                 popularLoaded: false,
-                latest: 0,
             }
         },
 
@@ -86,7 +85,6 @@
 
             manageLatest(){
                 if(this.rawPosts.length > 0){
-                    this.latest = this.rawPosts.length -1;
                     this.latestLoaded = true
                 }
 

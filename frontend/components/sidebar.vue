@@ -13,7 +13,7 @@
             <div v-if="similarLoaded" class="popular-posts">
 
                 <article v-for="similar in  similarPosts" :key="similar.id" class="popular-post">
-                    <nuxt-link :to="{name: 'post-id', params: { id: similar.id } }">
+                    <nuxt-link :to="{name: 'post-slug-id', params: { slug: similar.slugTitle, id: similar.id } }">
                         <img :src="similar.thumbnail" alt="" class="popular__img">
                     </nuxt-link>
                     <div class="popular-content">
@@ -30,7 +30,7 @@
                             </span>
                         </div>
                         <h5 class="popular__title title">
-                            <nuxt-link :to="{name: 'post-id', params: { id: similar.id } }">
+                            <nuxt-link :to="{name: 'post-slug-id', params: { slug: similar.slugTitle, id: similar.id } }">
                                 {{similar.title}}
                             </nuxt-link>
                         </h5>
@@ -50,7 +50,7 @@
             <div v-if="popularLoaded" class="popular-posts">
 
                 <article v-for="popular in popularPosts" :key="popular.id" class="popular-post">
-                    <nuxt-link :to="{name: 'post-id', params: { id: popular.id } }">
+                    <nuxt-link :to="{name: 'post-slug-id', params: { slug: popular.slugTitle, id: popular.id } }">
                         <img :src="popular.thumbnail" alt="" class="popular__img">
                     </nuxt-link>
                     <div class="popular-content">
@@ -67,7 +67,7 @@
                             </span>
                         </div>
                         <h5 class="popular__title title">
-                            <nuxt-link :to="{name: 'post-id', params: { id: popular.id } }">
+                            <nuxt-link :to="{name: 'post-slug-id', params: { slug: popular.slugTitle, id: popular.id } }">
                                 {{popular.title}}
                             </nuxt-link>
                         </h5>
@@ -129,7 +129,6 @@
         },
 
         methods:{
-
             loadingManager(){
                 if(this.popular){
                     if(this.popularPosts.length > 0){

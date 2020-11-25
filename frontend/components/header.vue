@@ -10,7 +10,7 @@
 
                 <nav class="header-nav nav">
                     <ul class="header-list">
-                        <li><nuxt-link to="mailto:commitmaster@gmail.com">Contact</nuxt-link></li>
+                        <li><a href="mailto:commitmaster@gmail.com">Contact</a></li>
                     </ul>
 
                     <ul class="header-social social">
