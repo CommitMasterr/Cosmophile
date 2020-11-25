@@ -1,0 +1,185 @@
+/*==========================================================
+    Feed styling
+==========================================================*/
+.feed{
+
+    &-feed{
+        grid-area: feed;
+    }
+
+
+    &-filter{
+        background: $primary;
+        margin-bottom: 40px;
+        padding: 10px;
+
+        border-radius: 2px;
+        border: 1px solid $b-color;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+
+        &-category{
+            padding: 5px;
+            button{
+                border: none;
+                padding: 10px 20px;
+                background: $primary2;
+                box-shadow: 0 0 3px 0 $btn-shadow;
+                border-radius: 3px;
+                color: $tint;
+                transition: all $s-delay;       
+
+                &:hover, &:focus{
+                    background: $tint;
+                    color: $primary;
+                }
+            }
+        }
+
+
+        
+
+    }
+    
+
+    &-post{
+        background: $tint;
+        margin-bottom: 40px;
+        position: relative;
+
+        display: flex;
+        height: 260px;
+        overflow: hidden;
+    }
+
+    &-img{
+        max-height: 400px;  
+        overflow: hidden;
+        width: 35%;
+    }
+
+    &__img{
+        width: 100%;
+        height: 100%;
+    }
+
+    &-content{
+        padding: 20px;
+        width: 65%;
+
+    }
+
+    &__title{
+        font-weight: 500;
+        margin: 0 0 15px 0;
+    }
+
+    &-meta{
+        display: flex;
+        margin-bottom: 20px;
+
+        a{
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            transition: $s-delay;
+
+            &:hover,&:focus{
+                color: $secondary;
+            }
+        }
+
+        img{
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+    }
+
+    &__text{
+        line-height: 28px;
+        font-family: "Lora";
+    }
+
+    &-sidebar{
+        grid-area: sidebar;
+    }
+
+}
+
+
+// Sidebar
+.popular{
+
+    &-posts{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-post{
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    &__img{
+        display: block;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+    }
+
+    &-content{
+        width: 100%;
+        background: $tint;
+
+    }
+
+    &__title{
+        padding: 10px 5px;
+        text-align: center;
+    }
+
+    &-meta{
+        padding: 8px 18px;
+        background: $primary;
+        display: flex;
+        justify-content: center;
+        color: $tint;
+        
+
+        .pubdate{
+            margin-right: 20px;
+        }
+
+        a{
+            display: flex;
+            align-items: center;
+            color: $tint;
+        }
+
+        .categories{            
+            a{
+                transition: all $s-delay;
+                
+                &:hover, &:focus{
+                    color: $secondary;
+                }
+            }
+        }
+
+        img{
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    }
+
+}

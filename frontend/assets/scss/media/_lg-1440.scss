@@ -1,0 +1,31 @@
+/*==========================================================
+    Width 1440
+==========================================================*/
+
+@media (max-width: 1440px){
+    .header{
+        &-inner{
+            padding: 0 20px;
+        }
+    }
+
+
+    .highlights{
+        &-inner{
+            padding: 0 20px;
+        }    
+
+    }
+
+    .feed{
+        &-inner{
+            padding: 0 20px;
+        }   
+    }
+
+    .post{
+        &-inner{
+            padding: 0 20px;
+        }  
+    }
+}

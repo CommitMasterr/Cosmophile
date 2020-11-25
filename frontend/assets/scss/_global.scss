@@ -1,0 +1,338 @@
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.row{
+    display: flex;
+}
+
+.nav{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .header-list{
+        display: flex;
+
+    
+        li{
+            margin-right: 20px;
+            color: $tint;
+            text-transform: uppercase;
+            position: relative;
+            transition: all $s-delay;
+    
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &:after{
+                content: '';
+                position: absolute;
+
+                bottom: -3px;
+                left: 0;
+
+                width: 100%;
+                height: 2px;
+
+                background: $secondary;
+
+                transition: all $s-delay;
+
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            &:hover,&:focus{
+                color: $secondary;
+                &:after{
+                    transform: scaleX(1);
+                }
+            }
+
+        }
+    }
+
+}
+
+
+.social{
+    display: flex;
+
+    li{
+        margin-right: 20px;
+        transition: all $s-delay;
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &:hover,&:focus{
+            transform: scale(1.2);
+        }
+    }
+
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+
+    &-list{
+        background: $primary3;
+        padding: 10px;
+        display: flex;
+        border-radius: 2px;
+        border: 1px solid $b-color;
+
+        li{
+            cursor: pointer;
+            margin-right: 10px;
+            background: linear-gradient(to top,$primary 0, $primary2 100%);
+            box-shadow: 0 0 3px 0 $btn-shadow;
+            border-radius: 3px;
+
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all $s-delay;
+            color: $tint;
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &:hover{
+                color: $primary;
+                background: $tint;
+            }
+        }
+    }
+
+    .active{
+        color: $primary;
+        background: $tint;
+    }
+}
+
+.ads{
+    background: $primary;
+    padding: 20px;
+    margin-bottom: 40px;
+
+    .g-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .banner{
+        margin: 5px;
+        background: $tint;
+        height: 240px;
+        width: 200px;
+        position: relative;
+
+        &:after{
+            content: 'CAPITALISM';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 22px;
+        }
+
+        &:before{
+            content: 'MONEY.';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 22px;
+        }
+    }
+
+}
+
+.comments{
+    background: $primary;
+    padding: 20px;
+    overflow: hidden;
+
+    &-form{
+        margin: 20px 0 40px 0;
+        padding: 0 20px;
+        .form-group{
+            margin-bottom: 10px;
+
+            &:first-child{
+                display: flex;
+            }
+
+            &:nth-child(even){
+                input{
+                    margin-right: 0;
+                }
+            }
+            
+            &:last-child{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        }
+
+        input{
+            border: none;
+            padding: 10px;
+            width: 50%;
+            margin-right: 10px;
+            &:nth-child(even){
+                margin-right: 0;
+            }
+        }
+
+
+        .form__textarea{
+            padding: 10px;
+            border: none;
+
+            width: 100%;
+            min-width: 100%;
+
+            height: 40px;
+            min-height: 45px;
+            max-height: 200px;
+            resize: vertical;
+
+        }
+        
+
+        .form__submit{
+            border-radius: 0;            
+        }
+    }
+
+    &-comment{
+        display: flex;
+        padding: 20px 0;
+        border-bottom: 2px dotted $primary2;
+
+
+        &:last-child{
+            border: none;
+        }
+    }
+
+    &__avatar{
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin-top: 5px;
+        margin-right: 15px;
+    }
+
+    &-header{
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 6px;
+
+        span{
+            color: $secondary;
+            text-decoration: underline;
+        }
+    }
+
+    &__name{
+        margin-right: 10px;
+        color: $tint;
+    }
+
+    &__text{
+        color: $tint;
+        line-height: 26px;
+        font-family: 'Lora', sans-serif;
+        max-width: 800px;
+        word-break:break-all;
+
+    }
+}
+
+
+.headline{
+    margin-bottom: 20px;
+    display: inline-block;
+    letter-spacing: 1px;
+    position: relative; 
+    color: $tint;
+
+    &:after{
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+
+        width: 80%;
+        height: 3px;
+
+        background: linear-gradient(to right, $secondary, $secondary2);
+
+    }
+}
+
+
+.title{
+    a{
+        transition: all $s-delay;
+        &:hover, &:focus{
+            text-decoration: underline;
+            color: $secondary;
+        }
+    }
+}
+
+
+.primary-btn{
+    cursor: pointer;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    height: 40px;
+    
+    border: 2px solid $tint;
+    border-radius: 24px;
+    background: linear-gradient(to left, $bg-shadow 50%, $tint 50%);
+	background-size: 200% 100%;
+	background-position:right bottom;
+
+    color: $tint;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    &:focus{
+        outline: none;
+    }
+
+    transition: all $s-delay;
+
+    &:hover, &:focus{
+        color: $primary;
+        background-position:left bottom;
+    }
+
+}

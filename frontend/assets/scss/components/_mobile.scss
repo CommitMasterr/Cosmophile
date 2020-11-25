@@ -1,0 +1,139 @@
+/*==========================================================
+    Mobile styling
+==========================================================*/
+.mobile{
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    z-index: 10;
+
+    &-btn{        
+        display: none;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(to top,$secondary 0, $secondary2 100%);
+        border-radius: 50%;
+        border: 3px solid $tint;
+        position: relative;
+        opacity: 0.8;
+        transition: all $s-delay;
+
+        &.active{
+            transform: rotate(90deg);
+        }
+
+        &:after{
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 11px;
+            width: 33px;
+            height: 4px;
+            background: $tint;
+            box-shadow: 0 10px 0 $tint, 0 20px 0 $tint;
+        }
+
+        &:hover, &:focus{
+            opacity: 1;
+        }
+    }
+
+    &-menu{
+        padding: 20px;
+
+        position: fixed;
+        top: -100%;
+        left: 0;
+
+        &.open{
+            top: 0!important;
+        }
+
+        width: 100%;
+        min-height: 400px;
+
+        background: linear-gradient(45deg, $primary, $primary2);
+        box-shadow: 0 0 6px 0 rgba(0,0,0,.7);
+
+        z-index: 9;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all $s-delay;
+
+    }
+
+    &-list{
+        margin-bottom: 40px;
+        li{
+            text-align: center;
+            color: $tint;
+            font-family: 'Big Shoulders Stencil';
+            text-transform: uppercase;
+
+            a{
+                display: block;
+                padding: 15px 20px;
+                margin-bottom: 10px;
+
+                background: $primary2;
+                box-shadow: 0 0 2px 0 rgba(0,0,0,.2);
+                border-radius: 3px;
+
+                font-size: 38px;
+                line-height: 42px;
+                font-weight: bold;
+
+                transition: all $s-delay;
+
+                &:hover, &:focus{
+                    background: linear-gradient(to right, $secondary, $secondary2);
+                    transform: scale(1.1);
+                }
+
+            }
+
+        }
+    }
+
+    &-social{
+        li{
+            margin-right: 35px!important;
+            &:last-child{
+                margin-right: 0!important;
+            }
+        }
+
+        img{
+            width: 45px!important;
+            height: 45px!important;
+        }
+    }
+
+    &-shadow{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        background: rgba(0,0,0,.8);
+
+        z-index: -1;
+
+        opacity: 0;
+
+        transition: all $s-delay;
+
+        &.on{
+            opacity: 1;
+            z-index: 8;
+        }
+
+    }
+}

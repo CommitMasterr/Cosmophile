@@ -1,0 +1,67 @@
+/*==========================================================
+    Width 740
+==========================================================*/
+
+@media (max-width: 740px){
+    .mobile{
+        &-btn{
+            display: block;
+        }
+    }
+
+    .header{
+
+        &-inner{
+            justify-content: center;
+        }
+
+        &-logo{
+            margin-right: 0;
+        }
+
+        &-nav{
+            display: none;
+        }
+    }
+
+    .comments{
+
+        &-form{
+            padding: 0;
+            .form-group{
+                &:first-child{
+                    flex-direction: column;
+                    input{
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                        width: 100%;
+
+                        &:nth-child(even){
+                            margin-bottom: 0;
+                        }
+
+                    }
+
+
+                }
+
+                
+                &:last-child{  
+                    flex-direction: column-reverse;
+                    button{
+                        margin-top: 20px;
+                    }
+                }
+                
+
+            }
+        }
+
+    }
+
+
+    .error{
+        top: 25%;
+        left: 10%;
+    }
+}

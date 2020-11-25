@@ -1,0 +1,19 @@
+/*==========================================================
+    Fonts links & styling
+==========================================================*/
+
+// Oswald & Lora
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Oswald:wght@400;500;600&display=swap');
+
+// Big Shoulders Stencil 
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@300;400;600&display=swap');
+
+body{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    background: $primary2;
+}
+
+

@@ -1,0 +1,44 @@
+/*==========================================================
+    Width 840
+==========================================================*/
+@media (max-width: 840px){
+    .feed{
+        &-post{
+            flex-direction: column;
+            height: auto;
+            max-height: 900px;
+
+        }
+
+        &-img{
+            width: initial;
+            height: initial;
+
+        }
+
+        &__img{
+            height: initial;
+
+        }
+    
+    
+        &-content{
+            width: initial;
+    
+        }
+        
+        &__title{
+            text-align: center;
+        }
+
+        &-meta{
+            justify-content: center;
+
+        }
+
+        &__text{
+            text-align: center;
+        }
+    
+    }
+}

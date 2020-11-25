@@ -1,0 +1,55 @@
+/*==========================================================
+    Width 1140
+==========================================================*/
+
+@media (max-width: 1140px){
+
+    .highlights{
+        &-inner{
+            padding: 0 20px;
+        }    
+
+        &-posts{
+            flex-direction: column;
+        }
+
+        &-post{
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+
+    .feed{
+
+        &-inner{
+            grid-template-columns: 1fr;
+            grid-template-rows: auto ;
+            grid-template-areas: 'feed';
+    
+        }
+
+
+
+    }
+
+    .sidebar{
+        display: none;
+    }
+
+    .post{
+        &-inner{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto ;
+            grid-template-areas: 'feed';
+        }
+
+    }
+
+    
+    .astronaut {
+        left: 70%;
+        top: 35%;
+        opacity: 0.3;
+    }
+}

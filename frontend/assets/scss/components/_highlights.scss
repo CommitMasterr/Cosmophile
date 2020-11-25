@@ -1,0 +1,61 @@
+/*==========================================================
+    Highlights styling
+==========================================================*/
+.highlights{
+
+    margin-bottom: 40px;
+
+    &-posts{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-post{
+        position: relative;
+        margin-right: 10px;
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        overflow: hidden;
+        width: 100%;
+        max-width: 1100px;
+        height: 100%;
+        max-height: 385px;
+    }
+
+    &__img{
+        width: 100%;
+    }
+
+    &-content{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        padding: 20px;
+        background: $bg-shadow;
+    }
+
+    &__section-mark{
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        color: $tint;
+
+        img{
+            margin-right: 10px;
+        }
+    }
+
+    &__title{
+        margin-bottom: 24px;
+        color: $tint;
+        font-family: 'Big Shoulders Stencil Text', cursive;
+        font-weight: 400;
+    }
+
+}
