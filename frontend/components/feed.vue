@@ -31,10 +31,8 @@
                                         {{post.date}}
                                     </span>
                                     <span class="categories">
-                                        <nuxt-link to="#">
-                                            <img src="../assets/imgs/icons/tag.svg" alt="">
-                                            {{post.tags[0].name}}
-                                        </nuxt-link>
+                                        <img src="../assets/imgs/icons/tag.svg" alt="">
+                                        {{post.tags[0].name}}
                                     </span>
                                 </div>
 

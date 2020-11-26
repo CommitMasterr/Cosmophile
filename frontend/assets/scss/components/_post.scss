@@ -48,22 +48,14 @@
         }
 
         .categories{
-            a{
-                display: flex;
-                align-items: center;
-                transition: all $s-delay;
+            display: flex;
+            align-items: center;
 
-                img{
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 10px;
-                }
-
-                &:hover, &:focus{
-                    color: $secondary;
-                }
+            img{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
             }
-
 
         }
 

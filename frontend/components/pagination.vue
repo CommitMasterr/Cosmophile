@@ -24,7 +24,6 @@
                 pages: [],
                 currentPage: 1,
                 pagesLoaded: false,
-
                 comments: [],
             }
         },

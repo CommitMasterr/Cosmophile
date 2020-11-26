@@ -23,10 +23,8 @@
                                 {{similar.date}}
                             </span>
                             <span class="categories">
-                                <nuxt-link to="#">
-                                    <img src="../assets/imgs/icons/tag.svg" alt="">
-                                    {{similar.tags[0].name}}
-                                </nuxt-link>
+                                <img src="../assets/imgs/icons/tag.svg" alt="">
+                                {{similar.tags[0].name}}
                             </span>
                         </div>
                         <h5 class="popular__title title">
@@ -62,10 +60,8 @@
                                 {{popular.date}}
                             </span>
                             <span class="categories">
-                                <nuxt-link to="#">
-                                    <img src="../assets/imgs/icons/tag.svg" alt="">
-                                    {{popular.tags[0].name}}
-                                </nuxt-link>
+                                <img src="../assets/imgs/icons/tag.svg" alt="">
+                                {{popular.tags[0].name}}
                             </span>
                         </div>
                         <h5 class="popular__title title">

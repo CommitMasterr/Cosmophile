@@ -50,9 +50,9 @@
         background: $tint;
         margin-bottom: 40px;
         position: relative;
-
         display: flex;
-        height: 260px;
+        min-height: 260px;
+        max-height: 300px;
         overflow: hidden;
     }
 
@@ -88,12 +88,17 @@
         a{
             display: flex;
             align-items: center;
-            margin-left: 10px;
-            transition: $s-delay;
+        }
 
-            &:hover,&:focus{
-                color: $secondary;
-            }
+        .pubdate{
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .categories{
+            display: flex;
+            align-items: center;
         }
 
         img{
@@ -161,22 +166,20 @@
 
         .pubdate{
             margin-right: 20px;
+            display: flex;
+            align-items: center;
         }
+
+        .categories{
+            display: flex;
+            align-items: center;
+        }
+
 
         a{
             display: flex;
             align-items: center;
             color: $tint;
-        }
-
-        .categories{            
-            a{
-                transition: all $s-delay;
-                
-                &:hover, &:focus{
-                    color: $secondary;
-                }
-            }
         }
 
         img{
@@ -186,14 +189,6 @@
         }
     }
 
-    .no-posts{
-        color: $tint;
-        letter-spacing: 3px;
-        background: $primary3;
-        padding: 5px 10px;
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;      
-    }
+
 
 }

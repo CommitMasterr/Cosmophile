@@ -20,10 +20,8 @@
                                     {{currentPost.date}}
                                 </span>
                                 <span class="categories">
-                                    <nuxt-link to="#">
-                                        <img src="../assets/imgs/icons/tag.svg" alt="">
-                                        {{currentPost.tags[0].name}}
-                                    </nuxt-link>
+                                    <img src="../assets/imgs/icons/tag.svg" alt="">
+                                    {{currentPost.tags[0].name}}
                                 </span>
                                 <span class="comments">
                                     <img src="../assets/imgs/icons/comments.svg" alt="">
