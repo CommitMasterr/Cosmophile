@@ -1,5 +1,5 @@
 <template>
-    <div v-if="valid" class="pagination">
+    <div v-if="pagesLoaded" class="pagination">
         <ul class="pagination-list">
             <li v-bind:class="{ active: currentPage == page }" v-for="page in pages" :key="page" @click="pageData(page)"> 
                 {{page}}
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         
         props:{
@@ -21,15 +23,18 @@
             return{
                 pages: [],
                 currentPage: 1,
+                pagesLoaded: false,
 
+                comments: [],
             }
         },
 
 
 
         computed: {
-            rawData(){
-                return this.$store.getters['get' + this.dataName];
+
+            rawPosts(){
+                return this.$store.getters.getPosts;
             },
 
             filteredPosts(){
@@ -37,38 +42,36 @@
             },
 
             toPaginate(){
-                if(this.filteredPosts.length > 0){
-                    return this.filteredPosts;
+                if(this.dataName == "Comments"){
+                    return this.comments;
                 }
-                else{
-                    return this.rawData;
+                if(this.dataName === "Posts"){
+                    if(this.filteredPosts.length > 0){
+                        return this.filteredPosts;
+                    }
+                    else{
+                        return this.rawPosts;
+                    }
                 }
-
             },
 
-            valid(){
-                if(this.rawData.length > 0){
-                    return true
-                }
-                else{
-                    return false
-                }
-            }
+
         },
 
         watch: {
             toPaginate(){
-                if(this.toPaginate.length > 0){
-                    this.pages = [];
-                    this.currentPage = 1;
-                    this.paginate();
-                    this.pageData();
-                }
+                this.paginationManager();
             },
         },
 
         created(){
             this.requestData();
+            if(this.dataName == "Comments"){
+                this.$nuxt.$on('newCommentCreated', (data) => {
+                    this.toPaginate.push(data);
+                });
+            }
+
         },
 
         methods:{
@@ -76,12 +79,23 @@
             async requestData(){
                 if(this.dataName == "Comments")
                 {
-                    await this.$store.dispatch("fetch" + this.dataName, this.$route.params.id);
-                }
-                else{
-                    await this.$store.dispatch("fetch" + this.dataName); 
+                    axios.get("http://127.0.0.1:8000/api/comments/" + this.$route.params.id)
+                    .then((response) => {
+                        this.comments = response.data;
+                        console.log(response);
+                    });
                 }
 
+
+            },
+
+            paginationManager(){
+                if(this.toPaginate.length > 0){
+                    this.pages = [];
+                    this.currentPage = 1;
+                    this.paginate();
+                    this.pageData();   
+                }
             },
 
             paginate(){
@@ -111,7 +125,13 @@
                 }
 
                 if(dividedPage.length > 0){
-                    this.$store.dispatch("changePage"+ this.dataName, dividedPage);
+                    if(this.dataName === "Comments"){
+                        $nuxt.$emit('pagesDoneLoading', dividedPage)
+                    }
+                    else{
+                        this.$store.dispatch("changePage"+ this.dataName, dividedPage);
+                    }
+                    this.pagesLoaded = true;
                 }
             },
 

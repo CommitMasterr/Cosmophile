@@ -30,6 +30,7 @@
                 box-shadow: 0 0 3px 0 $btn-shadow;
                 border-radius: 3px;
                 color: $tint;
+                font-weight: 600;
                 transition: all $s-delay;       
 
                 &:hover, &:focus{
@@ -73,8 +74,11 @@
     }
 
     &__title{
-        font-weight: 500;
         margin: 0 0 15px 0;
+
+        a{
+            font-weight: bold;
+        }
     }
 
     &-meta{
@@ -180,6 +184,16 @@
             height: 20px;
             margin-right: 10px;
         }
+    }
+
+    .no-posts{
+        color: $tint;
+        letter-spacing: 3px;
+        background: $primary3;
+        padding: 5px 10px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;      
     }
 
 }

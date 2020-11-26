@@ -53,6 +53,7 @@
 
 <script>
     import VueRecaptcha from 'vue-recaptcha';
+    import axios from 'axios'
 
     export default {
         
@@ -69,35 +70,20 @@
                 email: '', 
                 name: '',
                 content: '',      
-
+                
+                pageComments: [],
             }
         },
 
-
-        computed: {
-            pageComments(){
-                return this.$store.getters.getPageComments;
-            },
-        },
-
         created(){
-            this.managePageComments();
-        },
-
-        watch: {
-            pageComments(){
-                this.managePageComments();
-            },
+            this.$nuxt.$on('pagesDoneLoading', (data) => {
+                this.pageComments = data;
+                this.commentsLoaded = true;
+            })
         },
 
 
         methods:{
-
-            managePageComments(){
-                if(this.pageComments.length > 0){
-                    this.commentsLoaded = true;
-                }
-            },
 
             markRecaptchaVerified(response) {
                 this.recaptchaToken = response;
@@ -125,19 +111,23 @@
             },
 
             createComment(){
-                this.$store.dispatch("createComment", {
+                axios.post("http://127.0.0.1:8000/api/comment/create", {
                     email: this.email,
                     name: this.name,
                     content: this.content,
                     post: this.id,
                     recaptchaToken: this.recaptchaToken
                 })
-                .then((result) => {
+                .then((response) => {
+                    console.log(response);
                     this.email = "";
                     this.name = "";
                     this.content = "";
-                    this.$refs.recaptcha.reset()
-                    console.warn(result);
+                    this.$refs.recaptcha.reset();
+                    $nuxt.$emit('newCommentCreated', response.data)
+                })
+                .catch((reject) => {
+                    console.warn(reject);
                 });
             },
 

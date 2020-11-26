@@ -4,8 +4,6 @@ export const state = () => ({
   posts: [],
   filteredPosts: [],
   pagePosts: [],
-  pageComments: [],
-  comments: [],
   popularPost: [],
   postTags: [],
 })
@@ -18,24 +16,14 @@ export const getters = {
     return state.pagePosts;
   },
 
-  getPageComments(state){
-    return state.pageComments;
+  getFilteredPosts(state) {
+    return state.filteredPosts;
   },
-
-
 
 
   // Data fetching
   getPosts(state) {
     return state.posts;
-  },
-
-  getFilteredPosts(state) {
-    return state.filteredPosts;
-  },
-
-  getComments(state) {
-    return state.comments;
   },
 
   getPopularPost(state){
@@ -56,25 +44,14 @@ export const mutations = {
     state.pagePosts = data;
   },
 
-  mutatePageComments(state, data) {
-    state.pageComments = data;
-  },
-
-
-
-
-
-  // Data fetching
-  mutateFetchPosts(state, data) {
-    state.posts = data.reverse();
-  },
-
   mutateFilteredPosts(state, data) {
     state.filteredPosts = data;
   },
 
-  mutateComments(state, data) {
-    state.comments = data.reverse();
+
+  // Data fetching
+  mutatePosts(state, data) {
+    state.posts = data.reverse();
   },
 
   mutatePopularPost(state, data) {
@@ -85,9 +62,6 @@ export const mutations = {
     state.postTags = data;
   },
 
-  mutateCreateComment(state, data) {
-    state.comments.push(data);
-  },
   
 }
 
@@ -97,39 +71,24 @@ export const actions = {
     commit("mutatePagePosts", data);
   },
 
-  changePageComments({commit}, data){
-    commit("mutatePageComments", data);
-  },
-
   changeFilteredPosts({commit}, data){
     commit("mutateFilteredPosts", data);
   },
 
 
 
-  
   // Data fetching
   async fetchPosts({commit}) {
     return new Promise((resolve) => {
       axios.get("http://127.0.0.1:8000/api/posts/")
       .then((response) => {
-        commit("mutateFetchPosts", response.data);
+        commit("mutatePosts", response.data);
         resolve(response);
       });
 
     });
   },
 
-  async fetchComments({commit}, id) {
-    return new Promise((resolve) => {
-      axios.get("http://127.0.0.1:8000/api/comments/" + id)
-      .then((response) => {
-        commit("mutateComments", response.data);
-        resolve(response);
-      });
-
-    });
-  },
 
   async fetchPopularPost({commit}) {
     return new Promise((resolve) => {
@@ -154,20 +113,6 @@ export const actions = {
     });
   },
 
-  
-  async createComment({commit}, newComment) {
-    return new Promise((resolve, reject) => {
-      axios.post("http://127.0.0.1:8000/api/comment/create", newComment)
-      .then((response) => {
-        commit("mutateCreateComment", response.data);
-        resolve(response);
-      })
-      .catch((reject) => {
-        resolve(reject);
-      });
-
-    });
-  },
 
 
 

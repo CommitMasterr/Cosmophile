@@ -12,7 +12,7 @@
 
             <div v-if="similarLoaded" class="popular-posts">
 
-                <article v-for="similar in  similarPosts" :key="similar.id" class="popular-post">
+                <article v-for="similar in similarPosts" :key="similar.id" class="popular-post">
                     <nuxt-link :to="{name: 'post-slug-id', params: { slug: similar.slugTitle, id: similar.id } }">
                         <img :src="similar.thumbnail" alt="" class="popular__img">
                     </nuxt-link>
@@ -36,6 +36,8 @@
                         </h5>
                     </div>
                 </article>
+
+                <p v-if="similarPosts.length <= 0" class="no-posts">There are no similar posts, yet :(</p>
 
             </div>
         </div>
@@ -73,6 +75,8 @@
                         </h5>
                     </div>
                 </article>
+
+                <p v-if="popularPosts.length <= 0" class="no-posts">There are no similar posts, yet :(</p>
 
             </div>
         </div>

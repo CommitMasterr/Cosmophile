@@ -79,10 +79,16 @@ export default {
 
     watch:{
         pagePosts(){
+            this.managePage();
+        },
+    },
+
+    methods: {
+        managePage(){
             if(this.pagePosts.length > 0){
                 this.loaded = true;
             }
         },
-    }
+    },
 }
 </script>

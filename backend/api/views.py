@@ -90,17 +90,21 @@ def PostTags(request):
 def CreateComment(request):
     postComment = PostComment()
     if request.method == "POST":
-
         response = {}
+
         data = request.data
+
         captchaToken = data.get('recaptchaToken')
+
         url = "https://www.google.com/recaptcha/api/siteverify"
         params = {
             'secret': settings.RECAPTCHA_SECRET_KEY,
             'response': captchaToken,
         }
+
         verify_rs = requests.get(url, params=params, verify=True)
         verify_rs = verify_rs.json()
+        
         response["status"] = verify_rs.get("success", False)
         response['message'] = verify_rs.get('error-codes', None) or "Unspecified error."
 

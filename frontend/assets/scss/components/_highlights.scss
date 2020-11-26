@@ -54,8 +54,14 @@
     &__title{
         margin-bottom: 24px;
         color: $tint;
-        font-family: 'Big Shoulders Stencil Text', cursive;
-        font-weight: 400;
+        a{
+            letter-spacing: -1px;
+            font-weight: bold;
+        }
+    }
+
+    &__btn{
+        font-size: 14px;
     }
 
 }

@@ -27,7 +27,7 @@
                                 </span>
                                 <span class="comments">
                                     <img src="../assets/imgs/icons/comments.svg" alt="">
-                                    {{rawComments.length}}
+                                    {{commentAmount}}
                                 </span>
                             </div>
 
@@ -92,6 +92,7 @@ export default {
             id: this.$route.params.id,
             currentPost: Object,
             postLoaded: false,
+            commentAmount: 0,
         }
     },
 
@@ -100,15 +101,17 @@ export default {
         rawPosts(){
             return this.$store.getters.getPosts;
         },
-        rawComments(){
-            return this.$store.getters.getComments;
-        }
+
 
     },
 
     created(){
         this.requestPosts();
-        this.findPost();
+        // this.findPost();
+
+        this.$nuxt.$on('pagesDoneLoading', (data) => {
+            this.commentAmount = data.length;
+        });
     },
 
     watch:{

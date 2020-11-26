@@ -11,7 +11,9 @@ import Highlights from '@/components/highlights';
 import Feed from '@/components/feed';
 
 export default {
-
+  created(){
+    this.$store.dispatch("fetchPosts"); 
+  },
 }
 </script>
 

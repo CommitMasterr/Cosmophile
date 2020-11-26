@@ -21,6 +21,7 @@
     
         li{
             margin-right: 20px;
+            font-weight: 600;
             color: $tint;
             text-transform: uppercase;
             position: relative;
@@ -245,11 +246,13 @@
 
     &-header{
         display: flex;
-        align-items: baseline;
+        align-items: center;
         margin-bottom: 6px;
 
         span{
             color: $secondary;
+            font-size: 18px;
+            font-weight: 600;
             text-decoration: underline;
         }
     }
@@ -260,9 +263,9 @@
     }
 
     &__text{
+        font-family: 'Lora', serif;
         color: $tint;
         line-height: 26px;
-        font-family: 'Lora', sans-serif;
         max-width: 800px;
         word-break:break-all;
 

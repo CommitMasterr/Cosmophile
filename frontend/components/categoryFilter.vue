@@ -68,6 +68,9 @@ export default {
                 if(filteredPosts.length > 0){
                     this.$store.dispatch("changeFilteredPosts", filteredPosts);
                 }
+                else{
+                    alert("There's no posts for this category, yet :)")
+                }
             }
             else{
                 this.$store.dispatch("changeFilteredPosts", this.rawPosts);
