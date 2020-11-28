@@ -2,10 +2,18 @@ import axios from 'axios'
 
 export const state = () => ({
   posts: [],
+  postsLoaded: false,
+
   filteredPosts: [],
+
   pagePosts: [],
-  popularPost: [],
+  pagePostsLoaded: false,
+
+  popularPosts: [],
+  popularPostsLoaded: false,
+
   postTags: [],
+  postTagsLoaded: false,
 })
 
 
@@ -14,6 +22,10 @@ export const getters = {
 
   getPagePosts(state){
     return state.pagePosts;
+  },
+
+  getPagePostsLoaded(state) {
+    return state.pagePostsLoaded;
   },
 
   getFilteredPosts(state) {
@@ -26,14 +38,25 @@ export const getters = {
     return state.posts;
   },
 
-  getPopularPost(state){
-    return state.popularPost;
+  getPostsLoaded(state) {
+    return state.postsLoaded;
+  },
+
+  getPopularPosts(state){
+    return state.popularPosts;
+  },
+
+  getPopularPostsLoaded(state){
+    return state.popularPostsLoaded;
   },
 
   getPostTags(state){
     return state.postTags;
   },
 
+  getPostTagsLoaded(state) {
+    return state.postTagsLoaded;
+  },
 
 
 }
@@ -42,6 +65,10 @@ export const mutations = {
 
   mutatePagePosts(state, data) {
     state.pagePosts = data;
+  },
+
+  mutatePagePostsLoaded(state, data) {
+    state.pagePostsLoaded = data;
   },
 
   mutateFilteredPosts(state, data) {
@@ -54,14 +81,22 @@ export const mutations = {
     state.posts = data.reverse();
   },
 
-  mutatePopularPost(state, data) {
-    state.popularPost = data;
+  mutatePostsLoaded(state, data) {
+    state.postsLoaded = data;
+  },
+
+  mutatePopularPosts(state, data) {
+    state.popularPosts = data;
+    state.popularPostsLoaded = true;
   },
 
   mutatePostTags(state, data) {
     state.postTags = data;
   },
 
+  mutatePostTagsLoaded(state, data) {
+    state.postTagsLoaded = data;
+  },
   
 }
 
@@ -69,6 +104,7 @@ export const actions = {
 
   changePagePosts({commit}, data){
     commit("mutatePagePosts", data);
+    commit("mutatePagePostsLoaded", true);
   },
 
   changeFilteredPosts({commit}, data){
@@ -80,21 +116,21 @@ export const actions = {
   // Data fetching
   async fetchPosts({commit}) {
     return new Promise((resolve) => {
-      axios.get("http://127.0.0.1:8000/api/posts/")
+      axios.get(process.env.BASE_URL + 'posts/')
       .then((response) => {
         commit("mutatePosts", response.data);
+        commit("mutatePostsLoaded", true);
         resolve(response);
       });
 
     });
   },
 
-
-  async fetchPopularPost({commit}) {
+  async fetchPopularPosts({commit}) {
     return new Promise((resolve) => {
-      axios.get("http://127.0.0.1:8000/api/comments/")
+      axios.get(process.env.BASE_URL + 'comments/')
       .then((response) => {
-        commit("mutatePopularPost", response.data);
+        commit("mutatePopularPosts", response.data);
         resolve(response);
       });
 
@@ -103,9 +139,10 @@ export const actions = {
 
   async fetchPostTags({commit}) {
     return new Promise((resolve) => {
-      axios.get("http://127.0.0.1:8000/api/tags/")
+      axios.get(process.env.BASE_URL + "tags/")
       .then((response) => {
         commit("mutatePostTags", response.data);
+        commit("mutatePostTagsLoaded", true);
         resolve(response);
       });
 

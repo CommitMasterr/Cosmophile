@@ -13,11 +13,14 @@ body,html {
 
 body{
     width: 100%;
-    min-width: 320px;
+    min-width: 350px;
     height: 100%;
     overflow-x: hidden;
 }
 
+.no-overflow{
+    overflow: hidden;
+}
 
 
 *, *:after, *:after{

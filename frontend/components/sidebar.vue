@@ -102,7 +102,7 @@
         computed:{
             popularPosts(){
                 if(this.popular){
-                    return this.$store.getters.getPopularPost;
+                    return this.$store.getters.getPopularPosts;
                 }
             },
 

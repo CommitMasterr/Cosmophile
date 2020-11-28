@@ -1,5 +1,6 @@
 <template>
   <main class="main">
+    <Spinner/>
     <Highlights />
     <Feed />
   </main>
@@ -7,6 +8,7 @@
 
 
 <script>
+import Spinner from '@/components/spinner';
 import Highlights from '@/components/highlights';
 import Feed from '@/components/feed';
 

@@ -94,10 +94,7 @@
             },
 
             validate() {
-                if (this.recaptchaToken === "" || this.recaptchaToken === undefined){
-                    alert("Please, select Google captcha before submiting the comment!")
-                    return true; 
-                }
+                // If some fields are empty
                 if(
                     this.email === "" ||
                     this.name === "" ||
@@ -106,12 +103,37 @@
                     alert("Please, fill all inputs before submiting the comment!")
                     return true; 
                 }
+                // if name is too long
+                if(this.name.match(/\S/g).length > 20){
+                    alert("Your name is to long, fit it under 20 letters, pls :)")
+                    return true; 
+                }
+                // if name is too short
+                if(this.name.match(/\S/g).length < 5){
+                    alert("Your name is to short, make it at least 5 letters long, pls :)")
+                    return true; 
+                }
+                // if content is too long
+                if(this.content.length > 370){
+                    alert("Fit what you've got to say under 370 letters, pls :)")
+                    return true; 
+                }
+                // if content is too short
+                if(this.content.length < 5){
+                    alert("Seems like you've got nothing to say, try at least a few more words :)")
+                    return true; 
+                }
+                // if captcha os not selected
+                if (this.recaptchaToken === "" || this.recaptchaToken === undefined){
+                    alert("Please, select Google captcha before submiting the comment!")
+                    return true; 
+                }
                 
                 this.createComment();
             },
 
             createComment(){
-                axios.post("http://127.0.0.1:8000/api/comment/create", {
+                axios.post(process.env.BASE_URL + "comment/create", {
                     email: this.email,
                     name: this.name,
                     content: this.content,

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="tagsLoaded" class="feed-filter">
+    <div v-if="postTagsLoaded" class="feed-filter">
         <div class="feed-filter-category">
             <button @click="changeCategory()">
                 All
@@ -20,7 +20,6 @@ export default {
 
     data(){
         return{
-            tagsLoaded: false,
         }
     },
 
@@ -29,13 +28,12 @@ export default {
             return this.$store.getters.getPostTags;
         },
 
-        rawPosts(){
-            return this.$store.getters.getPosts;
+        postTagsLoaded(){
+            return this.$store.getters.getPostTagsLoaded;
         },
 
-        
-        filteredPosts(){
-            return this.$store.getters.getFilteredPosts;
+        rawPosts(){
+            return this.$store.getters.getPosts;
         },
 
     },
@@ -47,9 +45,7 @@ export default {
     methods:{
 
         async fetchPostTags(){
-            await this.$store.dispatch("fetchPostTags").then(() => {
-                this.tagsLoaded = true;
-            });
+            this.$store.dispatch("fetchPostTags");
         },
 
         changeCategory(newCategory){

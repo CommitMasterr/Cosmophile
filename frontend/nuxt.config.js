@@ -36,5 +36,12 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  }
+  },
+
+  env:{
+    BASE_URL: 'https://cosmophile-serv.herokuapp.com/api/',
+  },
+
+  // 'http://127.0.0.1:8000/api/'
+  
 }

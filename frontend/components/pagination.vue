@@ -25,6 +25,7 @@
                 currentPage: 1,
                 pagesLoaded: false,
                 comments: [],
+                toPaginate: [],
             }
         },
 
@@ -33,39 +34,34 @@
         computed: {
 
             rawPosts(){
-                return this.$store.getters.getPosts;
+                if(this.dataName === "Posts"){
+                    return this.$store.getters.getPosts;
+                }
             },
 
             filteredPosts(){
                 return this.$store.getters.getFilteredPosts;
             },
 
-            toPaginate(){
-                if(this.dataName == "Comments"){
-                    return this.comments;
-                }
-                if(this.dataName === "Posts"){
-                    if(this.filteredPosts.length > 0){
-                        return this.filteredPosts;
-                    }
-                    else{
-                        return this.rawPosts;
-                    }
-                }
-            },
 
 
         },
 
         watch: {
-            toPaginate(){
-                this.paginationManager();
+            rawPosts(){
+                this.loadToPaginate();
             },
+
+            filteredPosts(){
+                this.loadToPaginate();
+            }
         },
 
         created(){
-            this.requestData();
+
             if(this.dataName == "Comments"){
+                this.requestComments();
+
                 this.$nuxt.$on('newCommentCreated', (data) => {
                     this.toPaginate.push(data);
                 });
@@ -75,26 +71,42 @@
 
         methods:{
 
-            async requestData(){
-                if(this.dataName == "Comments")
-                {
-                    axios.get("http://127.0.0.1:8000/api/comments/" + this.$route.params.id)
-                    .then((response) => {
-                        this.comments = response.data;
-                        console.log(response);
-                    });
-                }
+            async requestComments(){
+                axios.get(process.env.BASE_URL + "comments/" + this.$route.params.id)
+                .then((response) => {
+                    this.comments = response.data;
+                    this.loadToPaginate();
+                });
+            },
 
+   
+            loadToPaginate(){
+                if(this.dataName == "Comments"){
+                    if(this.comments.length > 0){
+                        this.toPaginate = this.comments;
+                        this.paginationManager();
+                    }
+                }
+                if(this.dataName === "Posts"){
+                    if(this.filteredPosts.length > 0){
+                        this.toPaginate = this.filteredPosts;
+                        this.paginationManager();
+                    }
+                    else{
+                        if(this.rawPosts.length > 0){
+                            this.toPaginate = this.rawPosts;
+                            this.paginationManager();
+                        }
+                    }
+                }
 
             },
 
             paginationManager(){
-                if(this.toPaginate.length > 0){
-                    this.pages = [];
-                    this.currentPage = 1;
-                    this.paginate();
-                    this.pageData();   
-                }
+                this.pages = [];
+                this.currentPage = 1;
+                this.paginate();
+                this.pageData();   
             },
 
             paginate(){
@@ -128,8 +140,9 @@
                         $nuxt.$emit('pagesDoneLoading', dividedPage)
                     }
                     else{
-                        this.$store.dispatch("changePage"+ this.dataName, dividedPage);
+                        this.$store.dispatch("changePagePosts", dividedPage);
                     }
+
                     this.pagesLoaded = true;
                 }
             },

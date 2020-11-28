@@ -11,7 +11,7 @@
           
                     <CategoryFilter />
 
-                    <div v-if="loaded" class="feed-posts">
+                    <div v-if="pagePostsLoaded" class="feed-posts">
 
                         <article v-for="post in pagePosts" :key="post.id" class="feed-post">
                             <div class="feed-img">
@@ -36,8 +36,7 @@
                                     </span>
                                 </div>
 
-                                <p class="feed__text">
-                                    {{post.content.substring(0, 200) + "..."}}
+                                <p v-html="post.content.substring(0, 220)" class="feed__text">
                                 </p>
         
                             </div>
@@ -63,30 +62,17 @@ import CategoryFilter from './categoryFilter';
 
 export default {
 
-    data(){
-        return{
-            loaded: false,
-        }
-    },
-
     computed:{
         pagePosts(){
             return this.$store.getters.getPagePosts;
         },
+
+        pagePostsLoaded(){
+            return this.$store.getters.getPagePostsLoaded;
+        }
     },
 
-    watch:{
-        pagePosts(){
-            this.managePage();
-        },
-    },
 
-    methods: {
-        managePage(){
-            if(this.pagePosts.length > 0){
-                this.loaded = true;
-            }
-        },
-    },
+
 }
 </script>

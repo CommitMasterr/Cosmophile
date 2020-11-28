@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -14,7 +15,8 @@ class Post(models.Model):
     thumbnail = models.CharField(max_length=500)
     title = models.CharField(max_length=150)
     slugTitle = models.SlugField(max_length=150, default='slug-Title')
-    content = models.TextField()
+    content = RichTextField(blank=True, null=True)
+    # content = models.TextField()
     tags = models.ManyToManyField(PostTag)
     date = models.DateTimeField(default=timezone.now, blank=True)
 

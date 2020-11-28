@@ -28,10 +28,9 @@
                                     {{commentAmount}}
                                 </span>
                             </div>
-
-                            <p class="post__text">
-                                {{currentPost.content}}
-                            </p>
+                            
+                            <div  v-html="currentPost.content" class="post-description">
+                            </div>
 
                             <div class="post-share">
                                 <ul class="social">
@@ -105,7 +104,6 @@ export default {
 
     created(){
         this.requestPosts();
-        // this.findPost();
 
         this.$nuxt.$on('pagesDoneLoading', (data) => {
             this.commentAmount = data.length;
@@ -121,7 +119,7 @@ export default {
     methods:{
 
         async requestPosts(){
-            await this.$store.dispatch("fetchPosts");
+            this.$store.dispatch("fetchPosts");
         },
 
         findPost(){

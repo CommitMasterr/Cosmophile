@@ -8,7 +8,7 @@
                     </h4>
                 </header>
 
-                <div v-if="popularLoaded && latestLoaded" class="highlights-posts">
+                <div v-if="popularPostsLoaded && postsLoaded" class="highlights-posts">
                     <article class="highlights-post">
                         <img :src="rawPosts[0].thumbnail" alt="" class="highlights__img">
                         <div class="highlights-content">
@@ -47,55 +47,40 @@
         data(){
             return{
                 latestLoaded: false,
-                popularLoaded: false,
             }
         },
 
         computed:{
+
+            // Posts
             rawPosts(){
                 return this.$store.getters.getPosts;
             },
 
-            popularPosts(){
-                return this.$store.getters.getPopularPost;
+            postsLoaded(){
+                return this.$store.getters.getPostsLoaded;
             },
+            
+            // Popular posts
+            popularPosts(){
+                return this.$store.getters.getPopularPosts;
+            },
+
+            popularPostsLoaded(){
+                return this.$store.getters.getPopularPostsLoaded;
+            },
+
         },
 
         created(){
-            this.fetchPopularPost();
-            this.manageLatest();
-            this.managePopular();
+            this.fetchPopularPosts();
         },
 
-        watch: {
-            rawPosts(){
-                this.manageLatest();
-            },
-
-            popularPosts(){
-                this.managePopular();
-            },
-        },
 
         methods:{
-
-            async fetchPopularPost(){
-                await this.$store.dispatch("fetchPopularPost");
+            async fetchPopularPosts(){
+                this.$store.dispatch("fetchPopularPosts");
             },
-
-            manageLatest(){
-                if(this.rawPosts.length > 0){
-                    this.latestLoaded = true
-                }
-
-            },
-
-            managePopular(){
-                if(this.popularPosts.length > 0){
-                    this.popularLoaded = true
-                }
-            },
-            
         },
 
     }

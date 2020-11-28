@@ -37,6 +37,9 @@
             margin-right: 5px;
             background: $primary2;
             color: $tint;
+            &:last-child{
+                margin-right: 0;
+            }
         }
 
         .pubdate{
@@ -71,11 +74,45 @@
         }
     }
 
-    &__text{
+    &-description{
         padding: 0 20px;
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 30px;
+
+        p{
+            margin-bottom: 10px;
+        }
+
+        a{
+            color: $secondary;
+            font-weight: 600;
+            text-shadow: 0 0 1px 2px $bg-shadow;
+            transition: all $s-delay;
+            &:hover,&:focus{
+                color: $primary2;
+            }
+        }
+
+        strong{
+            font-weight: bold;
+        }
+
+        em{
+            font-style: italic;
+        }
+        
+        s{
+            text-decoration: line-through;
+        }
+
+        img{
+            max-width: 100%;
+            max-height: 100%;
+            margin: 5px;
+        }
+
+
     }
 
     &-share{
