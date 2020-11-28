@@ -98,8 +98,6 @@ export default {
         rawPosts(){
             return this.$store.getters.getPosts;
         },
-
-
     },
 
     created(){
@@ -107,6 +105,10 @@ export default {
 
         this.$nuxt.$on('pagesDoneLoading', (data) => {
             this.commentAmount = data.length;
+        });
+
+        this.$nuxt.$on('newCommentCreated', (data) => {
+            this.commentAmount += 1;
         });
     },
 

@@ -63,7 +63,8 @@
                 this.requestComments();
 
                 this.$nuxt.$on('newCommentCreated', (data) => {
-                    this.toPaginate.push(data);
+                    this.comments.push(data);
+                    this.loadToPaginate();
                 });
             }
 

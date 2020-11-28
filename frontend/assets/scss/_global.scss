@@ -248,7 +248,7 @@
         display: flex;
         align-items: baseline;
         margin-bottom: 4px;
-
+        width: 100%;
         span{
             color: $tint3;
             font-size: 18px;
@@ -261,6 +261,7 @@
         color: $white;
         letter-spacing: 1px;
         text-transform: capitalize;
+        word-break:break-all;
     }
 
     &__text{
